@@ -8,20 +8,19 @@ import Checkout from "./Checkout"
 function App() {
 
   return (
-    <div className="app">
-      <Router>
+    <Router>
+      <div className="app">
         <Header />
         <Switch>
-          <Route path="/" checkout >
+          <Route path="/checkout">
             <Checkout />
           </Route>
           <Route path="/">
             <Home />
           </Route>
         </Switch>
-
-      </Router>
-    </div>
+      </div>
+    </Router>
   );
 }
 
