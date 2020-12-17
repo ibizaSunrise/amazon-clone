@@ -4,7 +4,8 @@ import Header from './Header';
 import Home from './Home';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Checkout from "./Checkout";
-import Login from './Login'
+import Login from './Login';
+import Payment from './Payment'
 import { auth } from './firebase';
 import { useStateValue } from "./StateProvider";
 
@@ -39,6 +40,9 @@ useEffect(() => {
           </Route>
           <Route path="/checkout">
             <Checkout />
+          </Route>
+          <Route path="/payment">
+            <Payment/>
           </Route>
           <Route path="/">
             <Home />
