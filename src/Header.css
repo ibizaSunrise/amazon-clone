@@ -37,6 +37,7 @@
 
 .header__optionLineOne{
     font-size: 10px;
+    
 }
 
 .header__optionLineTwo{
@@ -66,4 +67,8 @@
     margin-left: 10px;
     margin-right: 10px;
     color: white
+}
+
+a{
+    text-decoration: none;
 }
