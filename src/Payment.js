@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Payment.css';
 import { useStateValue } from "./StateProvider";
 import CheckoutProduct from './CheckoutProduct';
-import { Link } from 'react-router-dom'
-import { useElements } from '@stripe/react-stripe-js';
+import { Link, useHistory } from 'react-router-dom'
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import CurrencyFormat from 'react-currency-format';
 import { getBasketTotal } from "./reducer";
+import axios from "./axios"
 
 function Payment() {
     const [{ basket, user }, dispatch] = useStateValue();
+    const history = useHistory();
 
     const stripe = useStripe();
     const elements = useElements();
@@ -20,15 +21,33 @@ function Payment() {
     const [disabled, setDisabled] = useState(true);
     const [clientSecret, setClientSecret] = useState(true);
 
-    useEffect(()=>{
 
+    useEffect(()=>{
+        const getClientSecret = async () => {
+            const response = await axios({
+                method: 'post',
+                url: `/payments/create?total=${getBasketTotal(basket) * 100}`
+            });
+            setClientSecret(response.data.clientSecret)
+        }
+        getClientSecret();
     }, [basket])
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         setProcessing(true);
 
-        // const payload = await stripe
+        const payload = await stripe.confirmCardPayment(clientSecret, {
+            payment_method: {
+                card: elements.getElement(CardElement)
+            }
+        }).then(({paymentIntent}) =>{
+            setSucceeded(true);
+            setError(null);
+            setProcessing(false);
+
+            history.replaceState('/orders')
+        })
     }
 
     const handleChange = e => {
@@ -90,7 +109,7 @@ function Payment() {
                                     thousandSeparator={true}
                                     prefix={"$"}
                                 />
-                                <button disabled={proccessing || disabled || succeeded}>
+                                <button disabled={processing || disabled || succeeded}>
                                     <span>{processing ? <p>Proccessing</p> : "Buy Now"}</span>
                                 </button>
                             </div>
