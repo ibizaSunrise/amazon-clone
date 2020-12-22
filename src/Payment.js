@@ -6,7 +6,8 @@ import { Link, useHistory } from 'react-router-dom'
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import CurrencyFormat from 'react-currency-format';
 import { getBasketTotal } from "./reducer";
-import axios from "./axios"
+import axios from "./axios";
+import { db } from "./firebase";
 
 function Payment() {
     const [{ basket, user }, dispatch] = useStateValue();
@@ -22,6 +23,7 @@ function Payment() {
     const [clientSecret, setClientSecret] = useState(true);
 
 
+
     useEffect(()=>{
         const getClientSecret = async () => {
             const response = await axios({
@@ -33,8 +35,6 @@ function Payment() {
         getClientSecret();
     }, [basket])
 
-    console.log('the secret is >>>>', clientSecret);
-
     const handleSubmit = async (event) => {
         event.preventDefault();
         setProcessing(true);
@@ -44,6 +44,17 @@ function Payment() {
                 card: elements.getElement(CardElement)
             }
         }).then(({paymentIntent}) =>{
+            db
+            .collection('users')
+            .doc(user?.id)
+            .collection('orders')
+            .doc(paymentIntent.id)
+            .set({
+                basket: basket,
+                amount: paymentIntent.ammount,
+                created: paymentIntent.created
+            })
+
             setSucceeded(true);
             setError(null);
             setProcessing(false);

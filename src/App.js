@@ -14,46 +14,47 @@ import { loadStripe } from '@stripe/stripe-js';
 
 const stripePromise = loadStripe('pk_test_51Hzh3mKCpA0W4em27JeJb0DdjFxqT5jnY7HdXPEzcFCfSaJcQxzz4AadnjE3FxKFxGJ6CHslUlkR3msdkdKGPrpT00yEMxnrkg');
 function App() {
-  const [{ }, dispatch] = useStateValue();
-  useEffect(() => {
+  const [{}, dispatch] = useStateValue();
 
+  useEffect(() => {
     auth.onAuthStateChanged(authUser => {
-      console.log('THE USER >>>', authUser);
       if (authUser) {
-        //the user just logged in / the user was logged in
         dispatch({
           type: 'SET_USER',
           user: authUser,
-        })
+        });
       } else {
-        //the user is logged out
         dispatch({
           type: 'SET_USER',
           user: null,
-        })
+        });
       }
-    })
-  }, [])
+    });
+  }, []);
+
   return (
     <Router>
       <div className="app">
-        <Header />
         <Switch>
         <Route path="/orders">
+            <Header />
             <Orders />
           </Route>
           <Route path="/login">
             <Login />
           </Route>
           <Route path="/checkout">
+            <Header />
             <Checkout />
           </Route>
           <Route path="/payment">
+            <Header />
             <Elements stripe={stripePromise}>
               <Payment />
             </Elements>
           </Route>
           <Route path="/">
+            <Header />
             <Home />
           </Route>
         </Switch>
