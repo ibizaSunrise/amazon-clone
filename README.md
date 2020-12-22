@@ -28,23 +28,17 @@ import logo from './logo.svg';
 
 Also remove everything under the first <div> element from your App.js file. You’re code should look like the following:
   
-import React from 'react';
-import './App.css';
-function App() {
-    return <div className='app'>React App</div>;
-}
-export default App;
+![Screenshot_3](https://user-images.githubusercontent.com/66250856/102891201-14b5b780-445e-11eb-9742-64d574ab31d4.png)
 
 Now let’s cleanup the CSS files a bit.
 Go to App.css and remove all the contents of your file.
 
 Now go to index.css and add this piece of code on the top:
 
-*{
-margin: 0;
-padding: 0;
-}
+![Screenshot_4](https://user-images.githubusercontent.com/66250856/102891206-15e6e480-445e-11eb-959b-5e52486b3439.png)
+
 This will get rid of the margin and padding of the page.
+
 
 ## 2. Setting up the React Router
 
