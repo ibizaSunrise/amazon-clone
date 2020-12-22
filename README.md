@@ -12,5 +12,46 @@ Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 This is the Welcome screen of React.
 
+![Screenshot_1](https://user-images.githubusercontent.com/66250856/102889491-0dd97580-445b-11eb-9f83-37d07251c42d.png)
 
+ We need to clean up our React project. Delete (optional) three files from the src folder from the React App. Those three files are
+App.test.js
+logo.svg
+setupTests.js
+We are deleting these files because these are not relevant to us in any project.
+
+![Screenshot_2](https://user-images.githubusercontent.com/66250856/102889495-0f0aa280-445b-11eb-8646-ad82a882c6c2.png)
+
+Go to App.js and remove the following line from code:
+
+import logo from './logo.svg';
+
+Also remove everything under the first <div> element from your App.js file. You’re code should look like the following:
+  
+import React from 'react';
+import './App.css';
+function App() {
+    return <div className='app'>React App</div>;
+}
+export default App;
+
+Now let’s cleanup the CSS files a bit.
+Go to App.css and remove all the contents of your file.
+
+Now go to index.css and add this piece of code on the top:
+
+*{
+margin: 0;
+padding: 0;
+}
+This will get rid of the margin and padding of the page.
+
+## 2. Setting up the React Router
+
+A very important thing to consider in a React app is the navigation (moving from one page to another) of the users. Since React is a single page application, it doesn’t support multiple routes by default.
+But the node packages come to our save. There’s a package named react-router-dom which allows us to create routes for our React project. Setting up is one time, and then whenever you add a new page, you just need to inform the Router.
+
+Open your terminal and enter the following command to install react-router-dom:
+
+npm install react-router-dom
 
