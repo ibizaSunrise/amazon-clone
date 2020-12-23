@@ -49,3 +49,14 @@ Open your terminal and enter the following command to install react-router-dom:
 
 npm install react-router-dom
 
+Let’s start setting up the React Router. First of all, we need to import the dependencies. Import them using the following code at the top of App.js. Use the below code in your App.js.
+
+Our motive is to have Home component to be rendered on the default route that is “/”.
+To use the Home component, we need to import it, so we imported it at the top.
+We need to wrap the entire app into the Router component, so that every component is a part of Router and has access to the Router.
+The switch specifies that the components beneath it are to be rendered only under certain routes. 
+The Route component is used under the Switch component. The Route component specifies the rules of the Routes and components to render at specific route. For example in this case we have the Home component render at “/” route. We will be adding more routes to this.
+
+## 
+
+
