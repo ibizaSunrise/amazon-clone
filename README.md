@@ -61,4 +61,15 @@ The Route component is used under the Switch component. The Route component spec
 
 ## 3. Creating the Navbar
 
+We are going to use a package for icons, and we need Material Icons to use them. So open your terminal and write the following command:
+
+npm install @material-ui/core @material-ui/icons
+
+Once you installed the dependencies, you can use it to display SVG icons which are provided by Material UI. Material UI is a very popular UI library for React which has a lot of prebuilt components just as icons which makes life easier.
+Now let’s make a new component called Header.js and let’s make a new file and call it Header.css just as we did with the home component. In each component, we will follow the same steps
+We have to initialize the component boiler plate using “rfce” and follow the BEM convention and include the CSS file and update the class names.
+We have the component ready. Before we actually start designing it, we need to include it in Router so that we can actually display it. In App.js where you mentioned Route for “/” route, let’s include the Header component in it too. Your updated route should look like this:
+
+
+
 
