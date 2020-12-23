@@ -70,6 +70,9 @@ Now let’s make a new component called Header.js and let’s make a new file an
 We have to initialize the component boiler plate using “rfce” and follow the BEM convention and include the CSS file and update the class names.
 We have the component ready. Before we actually start designing it, we need to include it in Router so that we can actually display it. In App.js where you mentioned Route for “/” route, let’s include the Header component in it too. Your updated route should look like this:
 
+![Screenshot_6](https://user-images.githubusercontent.com/66250856/102985213-19867400-450f-11eb-8c5d-6272197066f4.png)
+
+Let’s get back to Header.js and start setting up the layout of our classic Amazon Navbar. The Hrader component should look like this:
 
 
 
