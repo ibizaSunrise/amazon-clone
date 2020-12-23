@@ -74,5 +74,7 @@ We have the component ready. Before we actually start designing it, we need to i
 
 Let’s get back to Header.js and start setting up the layout of our classic Amazon Navbar. The Hrader component should look like this:
 
+![Screenshot_6](https://user-images.githubusercontent.com/66250856/102985935-44bd9300-4510-11eb-9c23-3907e410641e.png)
+
 
 
