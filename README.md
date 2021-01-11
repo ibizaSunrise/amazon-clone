@@ -76,5 +76,7 @@ Let’s get back to Header.js and start setting up the layout of our classic Ama
 
 ![Screenshot_7](https://user-images.githubusercontent.com/66250856/102986018-6880d900-4510-11eb-95d6-8e31e8fcf6d0.png)
 
+### https://medium.com/cleverprogrammer/amazon-clone-using-react-the-ultimate-guide-fba2b36f3458
+
 
 
